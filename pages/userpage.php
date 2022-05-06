@@ -9,7 +9,7 @@ $admin = 'rooayaseen@gmail.com';
 // $_SESSION['email'];
 // $_SESSION['pass'];
 // $_SESSION['date_create'];
-if($_SESSION['email'] !== $admin ){
+if($_SESSION["userEmail"] !== $admin ){
     echo '<style type="text/css">
     table {
         display: none;
@@ -31,14 +31,16 @@ if($_SESSION['email'] !== $admin ){
     <script src="https://kit.fontawesome.com/7b836f378e.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
+<p id='logo'>ROA</p>
 <div class="wrapper">
     <div class="profile">
         <div class="overlay">
             <div class="about">
                 <div id ='pic'></div>
             
-               <h1>Welcome <?php echo $_SESSION['fn'] ;?></h1>
+               <h3>Welcome <?php echo $_SESSION["userName"] ;?></h3>
+               <p><?php echo $_SESSION["userEmail"] ;?></p>
+               <p><?php echo $_SESSION["userMobile"] ;?></p>
                 <table class="table">
         <thead>
             <tr>
@@ -50,14 +52,20 @@ if($_SESSION['email'] !== $admin ){
             </tr>
         </thead>
         <tbody>
-            <tr >
-               
-                <td><?php echo $_SESSION['fn'] ;?> </td>
-                <td><?php echo $_SESSION['email'] ;?> </td><!--User Email-->
-                <td><?php echo $_SESSION['pass'] ;?> </td> <!--User Password-->
-                <td><?php echo $_SESSION['date_create'] ;?> </td> <!--User Date Create-->
-                <td><?php echo $_SESSION['lastaLI'] ;?></td> <!--User Last Login Date-->
-            </tr>
+        <?php
+        
+        foreach ($_SESSION["usersData"] as $value) {
+            echo "<tr>
+                    
+                    <td>".$value["name"]."</td>
+                    <td>".$value["email"]."</td>
+                    <td>".$value["password"]."</td>
+                    <td>".$value["Creation_Date"]."</td>
+                    <td>".$value["Last-Login-Date"]."</td>
+                </tr>";
+            
+        }
+        ?>
         </tbody>
     </table>
             </div>

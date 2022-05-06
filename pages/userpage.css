@@ -2,6 +2,23 @@ body{
 background-color: #000;
 font-family: 'Zilla Slab', serif; 
 }
+*{
+    margin: 0px;
+    padding: 0px;
+}
+#logo{
+	font-family: 'Orbitron', sans-serif;
+    position: relative;
+    top: 20px;
+	left: 20px;
+    text-align: center;
+    display: inline;
+    padding: 5px;
+    color: #3FB4BE;
+    border: 1px solid;
+    letter-spacing: 5px;
+    box-shadow:0 0 2px 1px #3FB4BE;
+}
 .wrapper{
     display: flex;
     justify-content: center;
@@ -40,7 +57,7 @@ font-family: 'Zilla Slab', serif;
         display: flex;
         list-style: none;
         bottom: 10px;
-        left: 45px;
+        left: 11%;
         position: absolute;
        
         text-align: center;
@@ -92,8 +109,8 @@ font-family: 'Zilla Slab', serif;
     } */
 
     #pic{
-        width: 200px;
-        height: 200px;
+        width: 100px;
+        height: 100px;
         background-image:url(../img/userpic.jpg) ;
         border-radius: 50%;
         box-shadow:0 0 4px 4px #3FB4BE;
@@ -102,19 +119,33 @@ font-family: 'Zilla Slab', serif;
         color: #fff;
 
     }
+   
 
-    @media only screen and (max-width: 500px) {
-        table {
-          font-size: small;
-        }
-      }
-      @media only screen and (max-width: 350px) {
+    h3{
+        margin-top: 10px;
+    }
+    p{
+        color: #3FB4BE;
+        font-weight: 400;
+        
+    }
+   
+      @media only screen and (max-width: 1125px) {
         table {
           font-size: x-small;
         }
         h1{
             font-size: medium;
         }
+        .social-icons{
+            left:27%
+        }
 
       }
-    
+      @media only screen and (max-width: 400px) {
+        table {
+          font-size: xx-small;
+        }
+        
+
+      }

@@ -2,7 +2,10 @@
 
 session_start();
 
-$arr= array('');
+$_SESSION["usersData"];
+if(empty($_SESSION["usersData"])){
+    $_SESSION["usersData"]= [];
+}
 
 if (isset($_POST['submit'])){
 $fname = $_POST['fname'];
@@ -240,19 +243,14 @@ $Confirm= $_POST['Confirm'];
 // }
 if($checkFN && $checkMobile && $checkEmaile && $checkdate && $checkpass && $checkco ){
 
-$_SESSION['fn']= $fname;
-$_SESSION['mobile']= $mobile;
-$_SESSION['date']= $date;
-$_SESSION['email']= $email;
-$_SESSION['pass']= $pass;
-$_SESSION['date_create']=date("Y-m-d"); //Date Create
-array_push($arr,$_SESSION['fn'],$_SESSION['mobile'],$_SESSION['date'],$_SESSION['email'],$_SESSION['pass'],$_SESSION['date_create']);
-$_SESSION['arr']=$arr;
-    header('location:login.php');
+  
+$date_create=date("Y-m-d"); //Date Create
+
+$arr= ["email"=>  $email, "mobile"=>$mobile, "name"=> $fname, "password"=>$pass, "birthDate"=> $date, "Creation_Date"=>$date_create, "Last-Login-Date" =>"haven't login yet"];
+array_push($_SESSION["usersData"],$arr);
+header('location:login.php');
 }
-else {
-   
-}
+
 }
 
 ?>

@@ -1,31 +1,60 @@
 <?php
 session_start();
+ 
 
-// print_r($_SESSION['arr']);
 if (isset($_POST['submit'])){
     $Email =$_POST['email'];
     $Password= $_POST['Password'];
+  //   foreach ($_SESSION["usersData"] as $key => $value) {
+  //     // print_r($_SESSION["usersData"][count($_SESSION["usersData"])-1]);
+  //     if($LoginEmail == $value["email"] && $LoginPassword == $value["password"]){
+  //         $_SESSION["userEmail"]= $value["email"];
+  //         $_SESSION["userName"]= $value["name"];
+  //         $_SESSION["userMobile"]= $value["mobile"];
+  //         $_SESSION["usersData"][$key]["Last-Login-Date"]= date("d-m-Y");
+  //         $_SESSION["usersData"];
+  //         header('Location: ../Welcome Page/index.php');
+  //     }else if($LoginEmail == $value["email"] && $LoginPassword != $value["password"]){
+  //         echo "<span style='color: red;'> The password is wrong </span>";
+  //         break;
+  //     }else if($value == $_SESSION["usersData"][count($_SESSION["usersData"])-1]){
+  //         $notFound= "<span style='color: red;'> You are not registered </span>";
+  //     }
+  // }
 
-    if($Email == $_SESSION['email'] && $Password== $_SESSION['pass']){
-        $_SESSION['lastaLI']=date("Y-m-d"); //Date log in
-        header('location:userpage.php');
-      
-    } else if ($Email !== $_SESSION['email'] ){
-        $wrong1= '<style type="text/css">
-        #i11, #one1{
-            display: inline;
-        }
-        </style>';
+  foreach ($_SESSION["usersData"] as $key => $value){
+    if($Email== $value["email"]&& $Password== $value["password"]){
+             $_SESSION["userEmail"]= $value["email"];
+             $_SESSION["userName"]= $value["name"];
+             $_SESSION["userMobile"]= $value["mobile"];
+             $_SESSION["usersData"][$key]["Last-Login-Date"]= date("d-m-Y"); //Date log in
+             $_SESSION["usersData"];
+           
+             
+           header('location:userpage.php');
+    }  else if ($Email !== $value["email"]){
+      $wrong1= '<style type="text/css">
+      #i11, #one1{
+          display: inline;
+      }
+      </style>';
 
-    } else if ( $Password !== $_SESSION['pass'] ){
-        $wrong2= '<style type="text/css">
+  } else if ($Password !== $value["password"]){
+    $wrong2= '<style type="text/css">
         #i22, #two2{
             display: inline;
         }
         </style>';
 
-    }
 
+}
+
+  }
+
+
+
+
+    
 
 
 
