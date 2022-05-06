@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>welcome page</title>
+    <script src="https://kit.fontawesome.com/7b836f378e.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="welcome.css">
+</head>
+
+<body>
+    <audio id = 'mysong'> <source src="./img/website.mp3" type="audio/mp3"></audio>
+    <p>ROA</p>
+    <div>dfbgd </div> <br><br> <br>
+    <div id="icon" >
+    <i class="fa-solid fa-circle-play" id="play" onclick="playm()"></i>
+    <i class="fa-solid fa-pause" id="pause" onclick=" pausem()"></i> 
+</div>
+    <h1>Welcome <strong>stranger</strong></h1>
+    <div id="butt">
+    <a href="./pages/login.php"><button>Login</button></a>
+    <a href="./pages/page2.php"><button>Sign Up</button></a>
+</div>
+</body>
+<script>
+    let mysong = document.getElementById('mysong');
+    let play = document.getElementById('play');
+    let pause = document.getElementById('pause');
+   function playm(){
+       
+           mysong.play(); 
+    
+   }
+   function pausem(){
+       
+       mysong.pause(); 
+
+}
+    
+</script>
+</html>
