@@ -170,8 +170,24 @@ button[type = submit]:hover {
 .field-group.error .error-icon {
 	display: block;
 }
+#reg{
+	display: none;
+	margin-top: 8px;
+	text-align: center;
+	color: green;
+	
+}
 .field-group.error input {
 	border: 2px solid hsl(0, 100%, 74%);
+}
+.na1, .na2{
+	margin: 5px;
+}
+
+#i1 {
+    
+    top: -2%;
+    left: 27%;
 }
 @media only screen and (min-width: 1000px) {
 	#intro {

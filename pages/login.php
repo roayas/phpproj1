@@ -5,29 +5,14 @@ session_start();
 if (isset($_POST['submit'])){
     $Email =$_POST['email'];
     $Password= $_POST['Password'];
-  //   foreach ($_SESSION["usersData"] as $key => $value) {
-  //     // print_r($_SESSION["usersData"][count($_SESSION["usersData"])-1]);
-  //     if($LoginEmail == $value["email"] && $LoginPassword == $value["password"]){
-  //         $_SESSION["userEmail"]= $value["email"];
-  //         $_SESSION["userName"]= $value["name"];
-  //         $_SESSION["userMobile"]= $value["mobile"];
-  //         $_SESSION["usersData"][$key]["Last-Login-Date"]= date("d-m-Y");
-  //         $_SESSION["usersData"];
-  //         header('Location: ../Welcome Page/index.php');
-  //     }else if($LoginEmail == $value["email"] && $LoginPassword != $value["password"]){
-  //         echo "<span style='color: red;'> The password is wrong </span>";
-  //         break;
-  //     }else if($value == $_SESSION["usersData"][count($_SESSION["usersData"])-1]){
-  //         $notFound= "<span style='color: red;'> You are not registered </span>";
-  //     }
-  // }
+
 
   foreach ($_SESSION["usersData"] as $key => $value){
     if($Email== $value["email"]&& $Password== $value["password"]){
              $_SESSION["userEmail"]= $value["email"];
              $_SESSION["userName"]= $value["name"];
              $_SESSION["userMobile"]= $value["mobile"];
-             $_SESSION["usersData"][$key]["Last-Login-Date"]= date("d-m-Y"); //Date log in
+             $_SESSION["usersData"][$key]["Last-Login-Date"]= date("H:i:s-m/d/y"); //Date log in
              $_SESSION["usersData"];
            
              
@@ -65,6 +50,7 @@ if (isset($_POST['submit'])){
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <script src="https://kit.fontawesome.com/7b836f378e.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="login.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
@@ -76,6 +62,10 @@ if (isset($_POST['submit'])){
 </head>
 <body>
 <p id='logo'>ROA</p>
+
+
+
+
   <section id="intro">
     <div class="container">
       <div class="left-col">
@@ -113,3 +103,7 @@ if (isset($_POST['submit'])){
       </div>
     </div>
   </section>
+</body>
+ 
+
+</html>

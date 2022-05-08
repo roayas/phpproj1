@@ -129,6 +129,7 @@ h1{
 	color: #3FB4BE;
 
 }
+
  /* button[type = submit] {
 	cursor: pointer;
 	background-color: hsl(154, 59%, 51%);
@@ -174,6 +175,7 @@ button[type = submit]:hover {
 .field-group.error input {
 	border: 2px solid hsl(0, 100%, 74%);
 }
+
 @media only screen and (min-width: 1000px) {
 	#intro {
 		background-image: url(./images/bg-intro-desktop.png);

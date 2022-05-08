@@ -14,6 +14,38 @@ if($_SESSION["userEmail"] !== $admin ){
     table {
         display: none;
     }
+    #pic{
+        width: 200px;
+        height: 200px;
+    }
+    h3{
+        font-size: xxx-large;
+
+    }
+    p{
+        color: #fff;
+        font-weight: bold;
+        font-size: x-large;
+        margin-top: 10px;
+    }
+    @media only screen and (max-width: 400px) {
+        #pic{
+            width: 100px;
+            height: 100px;
+           
+        }
+        table {
+          font-size: xx-small;
+        }
+        h3{
+            font-size: medium;
+        }
+        p{
+            font-size: medium;
+            
+        }
+
+      }
     </style>';
 }
 
@@ -36,7 +68,7 @@ if($_SESSION["userEmail"] !== $admin ){
     <div class="profile">
         <div class="overlay">
             <div class="about">
-                <div id ='pic'></div>
+                <div id ='pic' class='pic'></div>
             
                <h3>Welcome <?php echo $_SESSION["userName"] ;?></h3>
                <p><?php echo $_SESSION["userEmail"] ;?></p>

@@ -2,7 +2,7 @@
 
 session_start();
 
-$_SESSION["usersData"];
+
 if(empty($_SESSION["usersData"])){
     $_SESSION["usersData"]= [];
 }
@@ -10,6 +10,10 @@ if(empty($_SESSION["usersData"])){
 if (isset($_POST['submit'])){
 $fname = $_POST['fname'];
 // $checkFN= validateName($fname);
+$fname = $_POST['fname'];
+$mname = $_POST['mname'];
+$lname = $_POST['lname'];
+$faname= $_POST['faname'];
 $mobile= $_POST['Mobile'];
 // $checkMobile = validateMobile($mobile);
 $date = $_POST['Date'];
@@ -23,7 +27,7 @@ $Confirm= $_POST['Confirm'];
 
 
 
-
+// && preg_match($letters,$mname) &&preg_match($letters,$lname) &&preg_match($letters,$faname)
 
 
 ///////////////////////////////////////////
@@ -34,8 +38,8 @@ $Confirm= $_POST['Confirm'];
 //     }
 //     </style>';
    $letters = "/^(?=.{1,50}$)[a-z]+(?:['_.\s][a-z]+)*$/i";
-   $aa= '/^([\w]{2,})+\s+([\w\s]{2,})+$/i';
-    if (preg_match($aa,$fname)) {
+  
+    if (preg_match($letters,$fname)  && preg_match($letters,$mname) &&preg_match($letters,$lname) && preg_match($letters,$faname)) {
         $checkFN= true;
        
         
@@ -117,6 +121,21 @@ $Confirm= $_POST['Confirm'];
 //         display: none;
 //     }
 //     </style>';
+if(!empty($_SESSION["usersData"])){
+foreach ($_SESSION["usersData"] as $key => $value){
+    if($email== $value["email"]){
+        $checkEm= false; 
+        $e= '<style type="text/css">
+        #i7, #seven1 {
+            display: inline;
+        }
+        </style>';
+       
+    }else{
+        $checkEm= true;  
+    }}}else{
+        $checkEm= true;  
+    }
     $filter2= "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/";
     
     if (preg_match($filter2,$email)) {
@@ -241,14 +260,23 @@ $Confirm= $_POST['Confirm'];
        
     }
 // }
-if($checkFN && $checkMobile && $checkEmaile && $checkdate && $checkpass && $checkco ){
+if($checkFN && $checkMobile && $checkEmaile && $checkdate && $checkpass && $checkco &&  $checkEm  ){
 
-  
-$date_create=date("Y-m-d"); //Date Create
+  $reg='<style type="text/css">
+  #reg{
+      display: block;
+  }
+  </style>';
+$date_create=date("H:i:s-m/d/y"); //Date Create
 
 $arr= ["email"=>  $email, "mobile"=>$mobile, "name"=> $fname, "password"=>$pass, "birthDate"=> $date, "Creation_Date"=>$date_create, "Last-Login-Date" =>"haven't login yet"];
 array_push($_SESSION["usersData"],$arr);
-header('location:login.php');
+echo "<script language='javascript'>
+setTimeout(() => {
+    window.location.href = 'login.php'; 
+ }, 3000);
+</script>";
+
 }
 
 }
@@ -284,9 +312,12 @@ header('location:login.php');
           <h1>Sign Up</h1>
             <div class="field-group">
               <label for="first-name">Full Name</label>
-              <input name='fname' id="first-name" type="text"  required="true">
+              <input name='fname' id="first-name" type="text"  required="true"  placeholder='First name' class='na1'>
+              <input name='mname' id="middle-name" type="text"  required="true" placeholder='middle name'class='na1'>
+              <input name='lname' id="last-name" type="text"  required="true" placeholder='last name'class='na2'>
+              <input name='faname' id="family-name" type="text"  required="true" placeholder='family name' class='na2'>
               <img src="../img/icon-error (1).svg" class="error-icon" alt="" id="i1">
-              <p class="error-text" id ='one'>the name should be like this: Joe Sam Mon Doe</p> 
+              <p class="error-text" id ='one'>Name field required only alphabet characters</p> 
               <?php if(isset($b)){echo $b;}?>             
             </div>
             <div class="field-group">
@@ -308,6 +339,7 @@ header('location:login.php');
               <input name='Email' id="Email" value="" type="email"  required="true">
               <img src="../img/icon-error (1).svg" class="error-icon" alt="" id='i7'>
               <p class="error-text" id='seven'>Looks like this is not email</p>
+              <p class="error-text" id='seven1'>this email already sign up</p>
               <?php if(isset($e)){echo $e;}?>               
             </div>
             <div class="field-group">
@@ -328,7 +360,9 @@ header('location:login.php');
                 <p class="error-text" id='nine'>Password not matching</p> 
                 <?php if(isset($g)){echo $g;}?>              
               </div>
-            <input type="submit" value='Sign Up' name='submit' id = 'signup'> 
+            <input type="submit" value='Sign Up' name='submit' id = 'signup'>
+            <p id='reg'> successfully registered<p> 
+            <?php if(isset($reg)){echo $reg;}?> 
             <p class="form-footer">By clicking the button, you are agreeing to our <span>Terms and Services</span></p>
           </form>
         </div>

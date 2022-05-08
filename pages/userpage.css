@@ -108,7 +108,7 @@ font-family: 'Zilla Slab', serif;
         margin: 30%;
     } */
 
-    #pic{
+    .pic{
         width: 100px;
         height: 100px;
         background-image:url(../img/userpic.jpg) ;
@@ -123,6 +123,7 @@ font-family: 'Zilla Slab', serif;
 
     h3{
         margin-top: 10px;
+        text-align: center;
     }
     p{
         color: #3FB4BE;
@@ -143,9 +144,23 @@ font-family: 'Zilla Slab', serif;
 
       }
       @media only screen and (max-width: 400px) {
+        #pic{
+            width: 100px;
+            height: 100px;
+           
+        }
         table {
           font-size: xx-small;
         }
-        
+        h3{
+            font-size: medium;
+        }
+        p{
+            font-size: medium;
+            
+        }
+        .social-icons {
+            left: 38%;
+        }
 
       }
